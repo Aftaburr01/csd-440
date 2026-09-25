@@ -1,0 +1,159 @@
+<!--
+    =============================================================================
+    Title:            AftabJSONForm.html
+    Author:           Aftabur Rahman
+    Date:             September 25, 2026
+    Course:           CSD 440 Server-Side Scripting
+    Assignment:       Module 10.2 Programming Assignment
+    Description:      Client-side HTML5 input form that prompts the user to enter 
+                      eight different fields of data and submits them via POST 
+                      to the AftabJSON.php CGI script for JSON serialization.
+    =============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSD 440 - Module 10.2: JSON Form Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            margin: 30px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            font-size: 24px;
+        }
+        p.subtitle {
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #334155;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+        .btn-submit {
+            background-color: #1e40af;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .btn-submit:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CSD 440 Server-Side Scripting</h1>
+    <p class="subtitle"><strong>Module 10.2:</strong> 8-Field Data Entry Form for JSON Encoding</p>
+
+    <!-- Submission Target points to AftabJSON.php -->
+    <form action="AftabJSON.php" method="POST" novalidate>
+        <!-- Field 1: Full Name (String) -->
+        <div class="form-group">
+            <label for="fullName">1. Full Name (String):</label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g., Aftabur Rahman">
+        </div>
+
+        <!-- Field 2: Email Address (Email/String) -->
+        <div class="form-group">
+            <label for="email">2. Email Address (Email):</label>
+            <input type="email" id="email" name="email" placeholder="e.g., student@bellevue.edu">
+        </div>
+
+        <!-- Field 3: Age (Integer) -->
+        <div class="form-group">
+            <label for="age">3. Age (Integer):</label>
+            <input type="number" id="age" name="age" placeholder="e.g., 35" min="1" max="120">
+        </div>
+
+        <!-- Field 4: City (String) -->
+        <div class="form-group">
+            <label for="city">4. City (String):</label>
+            <input type="text" id="city" name="city" placeholder="e.g., Kansas City">
+        </div>
+
+        <!-- Field 5: State (String) -->
+        <div class="form-group">
+            <label for="state">5. State (String):</label>
+            <input type="text" id="state" name="state" placeholder="e.g., Missouri">
+        </div>
+
+        <!-- Field 6: Registration Date (Date) -->
+        <div class="form-group">
+            <label for="registrationDate">6. Registration Date (Date):</label>
+            <input type="date" id="registrationDate" name="registrationDate">
+        </div>
+
+        <!-- Field 7: Account Balance (Float/Decimal) -->
+        <div class="form-group">
+            <label for="accountBalance">7. Account Balance ($ Float):</label>
+            <input type="number" step="0.01" id="accountBalance" name="accountBalance" placeholder="e.g., 500.25">
+        </div>
+
+        <!-- Field 8: Newsletter Subscription (Boolean Flag) -->
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="subscribe" name="subscribe" value="1">
+            <label for="subscribe">8. Subscribe to weekly newsletter (Boolean flag)</label>
+        </div>
+
+        <button type="submit" class="btn-submit">Encode to JSON</button>
+    </form>
+</div>
+
+</body>
+</html>
